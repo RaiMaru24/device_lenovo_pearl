@@ -10,11 +10,11 @@ from extract_utils.main import (
 )
 
 namespace_imports = [
-    'device/lenovo/J706L',
+    'device/lenovo/pearl',
 ]
 
 module = ExtractUtilsModule(
-    'J706L',
+    'pearl',
     'lenovo',
     namespace_imports=namespace_imports,
 )

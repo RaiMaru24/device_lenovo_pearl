@@ -7,14 +7,14 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 
-# Inherit from J706L device
-$(call inherit-product, device/lenovo/J706L/device.mk)
+# Inherit from pearl device
+$(call inherit-product, device/lenovo/pearl/device.mk)
 
 # Inherit some common Lineage stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 PRODUCT_DEVICE := J706L
-PRODUCT_NAME := lineage_J706L
+PRODUCT_NAME := lineage_pearl
 PRODUCT_BRAND := Lenovo
 PRODUCT_MODEL := Lenovo TB-J706L
 PRODUCT_MANUFACTURER := android-lenovo

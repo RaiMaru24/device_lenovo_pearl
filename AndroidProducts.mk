@@ -4,9 +4,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_J706L.mk
+    $(LOCAL_DIR)/lineage_pearl.mk
 
 COMMON_LUNCH_CHOICES := \
-    lineage_J706L-user \
-    lineage_J706L-userdebug \
-    lineage_J706L-eng
+    lineage_pearl-user \
+    lineage_pearl-userdebug \
+    lineage_pearl-eng

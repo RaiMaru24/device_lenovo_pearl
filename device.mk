@@ -75,7 +75,6 @@ PRODUCT_PACKAGES += \
     qca6234-service.sh \
 
 PRODUCT_PACKAGES += \
-    fstab.emmc \
     init.lenovo.log.rc \
     init.lenovo.property_tool.rc \
     init.qcom.factory.rc \
@@ -85,11 +84,22 @@ PRODUCT_PACKAGES += \
     init.target.rc \
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/fstab.emmc:$(TARGET_COPY_OUT_RAMDISK)/fstab.emmc
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
 
 # Inherit the proprietary files
-$(call inherit-product, vendor/lenovo/J706L/J706L-vendor.mk)
+$(call inherit-product, vendor/lenovo/pearl/pearl-vendor.mk)
+
+# Rootdir
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.qcom \
+    $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_RAMDISK)/fstab.qcom \
+    $(LOCAL_PATH)/rootdir/etc/init/hw/init.qcom.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.qcom.rc \
+    $(LOCAL_PATH)/rootdir/etc/init/hw/init.target.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.target.rc \
+    $(LOCAL_PATH)/rootdir/etc/init/hw/init.qcom.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.qcom.usb.rc \
+    $(LOCAL_PATH)/rootdir/etc/init/hw/init.qcom.factory.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.qcom.factory.rc \
+    $(LOCAL_PATH)/rootdir/etc/init/hw/init.qti.ufs.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.qti.ufs.rc \
+    $(LOCAL_PATH)/rootdir/etc/init/hw/init.lenovo.log.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.lenovo.log.rc \
+    $(LOCAL_PATH)/rootdir/etc/init/hw/init.lenovo.property_tool.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.lenovo.property_tool.rc

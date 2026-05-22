@@ -1,0 +1,7 @@
+
+on property:persist.sys.tblenovo.enableThirdAppFB=*
+    setprop persist.odm.tblenovo.enableThirdAppFB ${persist.sys.tblenovo.enableThirdAppFB}
+
+on property:persist.sys.tblenovo.enableThirdAppBokeh=*
+    setprop persist.odm.tblenovo.enableThirdAppBokeh ${persist.sys.tblenovo.enableThirdAppBokeh}
+

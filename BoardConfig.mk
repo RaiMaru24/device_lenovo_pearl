@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-DEVICE_PATH := device/lenovo/J706L
+DEVICE_PATH := device/lenovo/pearl
 
 # A/B
 AB_OTA_UPDATER := true
@@ -44,7 +44,7 @@ BOARD_KERNEL_PAGESIZE := 4096
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
-TARGET_KERNEL_CONFIG := vendor/j706l_defconfig
+TARGET_KERNEL_CONFIG := vendor/pearl_row_lte_defconfig
 TARGET_KERNEL_SOURCE := kernel/lenovo/sm6150
 
 # Kernel - prebuilt
@@ -105,4 +105,4 @@ BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest.xml
 
 # Inherit the proprietary files
-include vendor/lenovo/J706L/BoardConfigVendor.mk
+include vendor/lenovo/pearl/BoardConfigVendor.mk
