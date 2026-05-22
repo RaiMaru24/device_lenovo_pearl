@@ -1,0 +1,20 @@
+# Audio
+af.fast_track_multiplier=1
+audio.deep_buffer.media=true
+audio.offload.min.duration.secs=30
+audio.offload.video=true
+audio.sys.mute.latency.factor=2
+audio.sys.noisy.broadcast.delay=500
+audio.sys.offload.pstimeout.secs=3
+audio.sys.routing.latency=0
+
+# Media
+media.stagefright.audio.deep=false
+
+# Miscellaneous
+ro.af.client_heap_size_kbyte=7168
+ro.com.google.gmsversion=11_202106
+ro.opa.eligible_device=true
+ro.setupwizard.rotation_locked=false
+setupwizard.feature.baseline_setupwizard_enabled=true
+
