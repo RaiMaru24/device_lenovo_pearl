@@ -13,7 +13,7 @@ $(call inherit-product, device/lenovo/pearl/device.mk)
 # Inherit some common Lineage stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
-PRODUCT_DEVICE := J706L
+PRODUCT_DEVICE := pearl
 PRODUCT_NAME := lineage_pearl
 PRODUCT_BRAND := Lenovo
 PRODUCT_MODEL := Lenovo TB-J706L
