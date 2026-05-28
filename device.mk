@@ -352,6 +352,10 @@ PRODUCT_CHARACTERISTICS := tablet
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/power/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
 
+# Prebuilts - Kernel
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilts/dtb.img:dtb.img
+
 # QTI
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/permissions/privapp-permissions-qti.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-qti.xml \
