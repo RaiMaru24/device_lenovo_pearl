@@ -1,0 +1,21 @@
+# Firmware - from TB-J706L_USR_S630599_2308281652_Q00067_ROW
+
+BTFM.bin
+NON-HLOS.bin
+abl.elf
+aop.mbn
+cmnlib.mbn
+cmnlib64.mbn
+devcfg.mbn
+dspso.bin
+goodixfp.mbn
+hyp.mbn
+imagefv.elf
+km41.mbn
+logfs_ufs_8mb.bin
+qupv3fw.elf
+storsec.mbn
+tz.mbn
+uefi_sec.mbn
+xbl.elf
+xbl_config.elf

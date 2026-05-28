@@ -49,6 +49,9 @@ on init
     insmod /vendor/lib/modules/cirrus_wm_adsp.ko
     insmod /vendor/lib/modules/cirrus_cs35l41.ko
     write sys/devices/platform/goodix_ts.0/gesture/enable 0
+    start vendor.qseecomd
+    start keymaster-4-0
+    
 on early-fs
     start vold
 

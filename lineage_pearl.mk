@@ -7,7 +7,7 @@
 $(call inherit-product, device/lenovo/pearl/device.mk)
 
 # Inherit some common Lineage stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+$(call inherit-product, vendor/lineage/config/common_full_tablet_wifionly.mk)
 
 PRODUCT_DEVICE := pearl
 PRODUCT_NAME := lineage_pearl

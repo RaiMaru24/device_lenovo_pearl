@@ -227,6 +227,10 @@ WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # VINTF
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
+    vendor/lineage/config/device_framework_matrix.xml \
+    $(DEVICE_PATH)/configs/hidl/device_framework_matrix.xml
+    
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/hidl/manifest.xml
 DEVICE_MANIFEST_FILE += hardware/qcom-caf/sm8150/media/conf_files/sm6150/c2_manifest.xml
 
