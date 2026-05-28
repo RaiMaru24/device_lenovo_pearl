@@ -26,9 +26,9 @@ PRODUCT_PACKAGES += \
 
 # A/B
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.2-impl \
-    android.hardware.boot@1.2-impl.recovery \
-    android.hardware.boot@1.2-service
+    android.hardware.boot@1.1-impl \
+    android.hardware.boot@1.1-impl.recovery \
+    android.hardware.boot@1.1-service
 
 PRODUCT_PACKAGES += \
     update_engine \
@@ -61,7 +61,7 @@ PRODUCT_COPY_FILES += \
 
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal
-PRODUCT_AAPT_PREF_CONFIG := xxhdp
+PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # AID/fs configs
 PRODUCT_PACKAGES += \
@@ -241,7 +241,7 @@ PRODUCT_USES_QCOM_HARDWARE := true
 
 # fastbootd
 PRODUCT_PACKAGES += \
-    android.hardware.fastboot@1.1-impl-mock \
+    android.hardware.fastboot@1.0-impl-mock \
     fastbootd
 
 # fingerprint
@@ -264,19 +264,14 @@ PRODUCT_PACKAGES += \
     android.hardware.health@2.1-impl \
     android.hardware.health@2.1-service
 
-# HIDL
-PRODUCT_PACKAGES += \
-    android.hidl.base@1.0 \
-    android.hidl.base@1.0.vendor
-
 # Gatekeeper
 PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0.vendor
 
 # GPS
 PRODUCT_PACKAGES += \
-    android.hardware.gnss@2.1-impl-qti \
-    android.hardware.gnss@2.1-service-qti
+    android.hardware.gnss@2.1-impl \
+    android.hardware.gnss@2.1-service
 
 PRODUCT_PACKAGES += \
     gnss@2.0-base.policy \
@@ -442,9 +437,10 @@ PRODUCT_COPY_FILES += \
 
 
 # Thermal
+# Thermal
 PRODUCT_PACKAGES += \
-    android.hardware.thermal-service.qti
-
+    android.hardware.thermal@1.0-impl \
+    android.hardware.thermal@1.0-service
 
 # Touchscreen
 PRODUCT_COPY_FILES += \
