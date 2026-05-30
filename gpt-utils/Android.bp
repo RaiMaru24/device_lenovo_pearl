@@ -11,11 +11,13 @@ cc_library {
     shared_libs: [
         "libcutils",
         "liblog",
-        "libz",
     ],
     srcs: [
         "gpt-utils.cpp",
         "recovery-ufs-bsg.cpp",
+    ],
+    static_libs: [
+        "libz",
     ],
     vendor: true,
 }

@@ -13,6 +13,8 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
+$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
+
 # Add common definitions for Qualcomm
 # $(call inherit-product, hardware/qcom-caf/common/common.mk)
 
@@ -25,10 +27,27 @@ PRODUCT_PACKAGES += \
     fs_config_files
 
 # A/B
+AB_OTA_UPDATER := true
+ENABLE_VIRTUAL_AB := false
+ENABLE_VIRTUAL_AB_OTA := false
+AB_OTA_PARTITIONS += \
+    boot \
+    dtbo \
+    vbmeta \
+    vbmeta_system \
+    system \
+    system_ext \
+    vendor \
+    product
+
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.1-impl-qti \
     android.hardware.boot@1.1-impl-qti.recovery \
-    android.hardware.boot@1.1-service
+    android.hardware.boot@1.1-service \
+    android.hardware.boot@1.1-service.rc \
+    android.hardware.boot@1.0-impl-1.1-qti \
+    bootctrl.qcom \
+    bootctrl.qcom.recovery
 
 PRODUCT_PACKAGES += \
     update_engine \
@@ -303,7 +322,7 @@ PRODUCT_COPY_FILES += \
 
 # Keymaster
 PRODUCT_PACKAGES += \
-    android.hardware.keymaster@4.1.vendor \
+    android.hardware.keymaster@4.0.vendor \
     android.system.keystore2
 
 # Network
@@ -373,8 +392,10 @@ PRODUCT_PACKAGES += \
 
 # Rootdir
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.default \
+    $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.qcom \
+    $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_RAMDISK)/fstab.qcom \
     $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_RAMDISK)/fstab.default \
+    $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.qcom \
     $(LOCAL_PATH)/rootdir/etc/init.qcom.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.qcom.rc \
     $(LOCAL_PATH)/rootdir/etc/init.target.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.target.rc \
     $(LOCAL_PATH)/rootdir/etc/init.qcom.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.qcom.usb.rc \
@@ -382,7 +403,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/init.qti.ufs.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.qti.ufs.rc \
     $(LOCAL_PATH)/rootdir/etc/init.lenovo.log.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.lenovo.log.rc \
     $(LOCAL_PATH)/rootdir/etc/init.lenovo.property_tool.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.lenovo.property_tool.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.rc:$(TARGET_COPY_OUT_VENDOR)/etc/ueventd.rc
+    $(LOCAL_PATH)/rootdir/ueventd.rc:$(TARGET_COPY_OUT_VENDOR)/ueventd.rc
 
 PRODUCT_PACKAGES += \
     init.recovery.qcom.rc
@@ -453,7 +474,8 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/google/pixel \
     hardware/qcom-caf/sm8150/display \
     vendor/qcom/opensource/commonsys-intf/display \
-    hardware/qcom/sm8150/gps
+    hardware/qcom/sm8150/gps \
+    hardware/qcom-caf/bootctrl
 
 # Telephony
 PRODUCT_PACKAGES += \

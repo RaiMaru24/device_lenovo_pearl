@@ -24,6 +24,7 @@ namespace_imports = [
     'hardware/qcom-caf/sm8150/display',
     'vendor/qcom/opensource/commonsys-intf/display',
     'hardware/qcom/sm8150/gps',
+    'hardware/qcom-caf/bootctrl',
 ]
 
 def lib_fixup_vendor_suffix(lib: str, partition: str, *args, **kwargs):
