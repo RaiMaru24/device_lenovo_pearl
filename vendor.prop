@@ -75,6 +75,7 @@ vendor.audio_hal.period_size=192
 vendor.voice.path.for.pcm.voip=true
 
 # Bluetooth
+bluetooth.device.default_name=Lenovo P11 Pro
 persist.bluetooth.a2dp_offload.cap=sbc-aac-aptx-aptxhd-ldac
 persist.bluetooth.a2dp_offload.disabled=false
 persist.vendor.bt.a2dp_offload_cap=sbc-aptx-aptxtws-aptxhd-aac
@@ -152,6 +153,7 @@ rild.libpath=/vendor/lib64/libril-qc-hal-qmi.so
 ro.telephony.iwlan_operation_mode=legacy
 
 # USB
+vendor.usb.product_string=Lenovo P11 Pro
 vendor.usb.diag.func.name=diag
 vendor.usb.use_ffs_mtp=0
 

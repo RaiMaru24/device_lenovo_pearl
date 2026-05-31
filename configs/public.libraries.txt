@@ -4,3 +4,5 @@ libcdsprpc.so
 libsdsprpc.so
 liblistensoundmodel2.so
 libOpenCL.so
+libprotobuf-cpp-full.so
+libprotobuf-cpp-lite.so
