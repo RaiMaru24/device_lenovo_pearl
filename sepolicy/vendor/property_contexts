@@ -28,12 +28,13 @@ ro.carrier.name                     u:object_r:public_vendor_default_prop:s0
 # Init
 vendor.all.devices.ready        u:object_r:vendor_device_prop:s0
 
-# Power
-vendor.powerhal.state      u:object_r:power_prop:s0
-vendor.powerhal.audio      u:object_r:power_prop:s0
-vendor.powerhal.lpm        u:object_r:power_prop:s0
-vendor.powerhal.init       u:object_r:power_prop:s0
-vendor.powerhal.rendering  u:object_r:power_prop:s0
+# PowerHAL
+vendor.powerhal.audio                                           u:object_r:vendor_power_prop:s0
+vendor.powerhal.dalvik.                                         u:object_r:vendor_power_prop:s0
+vendor.powerhal.init                                            u:object_r:vendor_power_prop:s0
+vendor.powerhal.lpm                                             u:object_r:vendor_power_prop:s0
+vendor.powerhal.rendering                                       u:object_r:vendor_power_prop:s0
+vendor.powerhal.state                                           u:object_r:vendor_power_prop:s0
 
 # Recovery
 ro.build.expect.           u:object_r:exported_default_prop:s0
@@ -48,3 +49,9 @@ persist.sensor.sardisable u:object_r:sensors_prop:s0
 sys.thermal.        u:object_r:thermal_normal_prop:s0
 vendor.sys.thermal.        u:object_r:thermal_normal_prop:s0
 persist.sys.thermal.config u:object_r:thermal_normal_prop:s0
+
+
+# Lenovo factory props
+sys.bt.address                                                  u:object_r:fac_prop:s0
+sys.lenovosn                                                    u:object_r:fac_prop:s0
+sys.wifimac                                                     u:object_r:fac_prop:s0
