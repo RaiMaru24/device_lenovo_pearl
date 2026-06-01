@@ -3,6 +3,7 @@ tunnel.audio.encode = true
 use.voice.path.for.pcm.voip=true
 
 # Bluetooth
+bluetooth.device.default_name=Lenovo P11 Pro
 persist.vendor.btstack.aac_frm_ctl.enabled=true
 ro.bluetooth.library_name=libbluetooth_qti.so
 
@@ -27,6 +28,9 @@ ro.hwui.text_small_cache_height=1024
 ro.hwui.text_small_cache_width=1024
 ro.hwui.texture_cache_flushrate=0.4
 ro.hwui.texture_cache_size=72
+
+# Graphics
+ro.gfx.driver.1=com.qualcomm.qti.gpudrivers.sm6150.api30
 
 # GNSS
 persist.vendor.overlay.izat.optin=rro
@@ -67,6 +71,9 @@ telephony.lteOnCdmaDevice=1
 
 # Sensors
 persist.vendor.sensors.enable.mag_filter=true
+
+# USB
+sys.usb.controller=a600000.dwc3
 
 # Wi-Fi
 ro.wifi.channels=

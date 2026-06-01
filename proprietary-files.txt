@@ -2,13 +2,20 @@
 
 # ACDB data
 vendor/etc/acdbdata/adsp_avs_config.acdb
+vendor/etc/acdbdata/IDP_Bluetooth_cal.acdb
+vendor/etc/acdbdata/IDP_Codec_cal.acdb
+vendor/etc/acdbdata/IDP_General_cal.acdb
+vendor/etc/acdbdata/IDP_Global_cal.acdb
+vendor/etc/acdbdata/IDP_Handset_cal.acdb
+vendor/etc/acdbdata/IDP_Hdmi_cal.acdb
+vendor/etc/acdbdata/IDP_Headset_cal.acdb
+vendor/etc/acdbdata/IDP_Speaker_cal.acdb
+vendor/etc/acdbdata/IDP_workspaceFile.qwsp
 
 # ADSP
 vendor/bin/adsprpcd
 vendor/bin/dspservice
 vendor/etc/init/vendor.qti.hardware.dsp@1.0-service.rc
-vendor/etc/seccomp_policy/codec2.vendor.base.policy
-vendor/etc/seccomp_policy/codec2.vendor.ext.policy
 vendor/etc/seccomp_policy/vendor.qti.hardware.dsp.policy
 vendor/lib/libadsp_default_listener.so
 vendor/lib/vendor.qti.hardware.dsp@1.0.so
@@ -119,12 +126,6 @@ vendor/lib64/soundfx/libqcvirt.so
 vendor/lib64/soundfx/libvolumelistener.so
 vendor/lib64/soundfx/libldnhncr.so
 vendor/lib64/soundfx/libreverbwrapper.so
-vendor/lib/hw/sound_trigger.primary.sm6150.so
-vendor/lib64/hw/sound_trigger.primary.sm6150.so
-vendor/lib/hw/audio.primary.sm6150.so
-vendor/lib64/hw/audio.primary.sm6150.so
-vendor/lib/hw/audio.primary.default.so
-vendor/lib64/hw/audio.primary.default.so
 
 # Bluetooth
 vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti
@@ -1655,3 +1656,16 @@ vendor/lib/librmp.so
 vendor/lib64/libbase64.so
 vendor/lib64/liboemcrypto.so
 vendor/lib64/librmp.so
+
+
+# qrd
+vendor/etc/ftm_test_config_qrd
+vendor/etc/libnfc-qrd-SN100.conf
+vendor/etc/libnfc-qrd-SN100_38_4MHZ.conf
+
+# tavil
+vendor/etc/audio_tuning_mixer_tavil.txt
+vendor/etc/ftm_test_config_sm6150-tavil-snd-card
+
+# wcd
+vendor/etc/ftm_test_config_sm6150-wcd9375qrd-snd-card

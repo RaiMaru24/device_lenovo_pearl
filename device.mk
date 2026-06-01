@@ -100,17 +100,17 @@ PRODUCT_PACKAGES += \
     libaudioroute.vendor \
     libstagefright_softomx_plugin.vendor \
     android.hardware.soundtrigger@2.0-impl \
-    sound_trigger.primary.sm6150 \
-    audio.primary.default \
-    audio.bluetooth.default \
-    audio.usb.default \
-    audio.r_submix.default \
     libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessing \
     libvolumelistener \
     libaudio-resampler \
-    libtinycompress
+    libtinycompress \
+    audio.bluetooth.default \
+    audio.usb.default \
+    audio.primary.sm6150 \
+    sound_trigger.primary.sm6150 \
+    audio.primary.default
 
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/audio/,$(TARGET_COPY_OUT_VENDOR)/etc)
@@ -191,6 +191,7 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.vibrator.service
 
 # Camera
+$(call soong_config_set_bool,camera,override_format_from_reserved,true)
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service_64 \
@@ -198,7 +199,8 @@ PRODUCT_PACKAGES += \
     libgui_vendor \
     libxml2 \
     Snap \
-    vendor.qti.hardware.camera.device@1.0.vendor
+    vendor.qti.hardware.camera.device@1.0.vendor \
+    android.frameworks.displayservice@1.0
 
 # CNE
 PRODUCT_PACKAGES += \
@@ -588,9 +590,13 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
     dalvik.system.boot-class-path.extra=/system_ext/framework/qti-telephony-common.jar
     
 PRODUCT_BOOT_JARS += \
-    telephony-ext
+    telephony-ext \
+    qcrilhook
 
 PRODUCT_PACKAGES := $(filter-out Dialer,$(PRODUCT_PACKAGES))
+
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.gsm.xml
 
 # WiFi
 PRODUCT_PACKAGES += \

@@ -10,5 +10,6 @@ type power_prop, property_type;
 # Thermal
 type thermal_normal_prop, property_type;
 
+type vendor_power_prop, property_type;
 
 type fac_prop, property_type;
