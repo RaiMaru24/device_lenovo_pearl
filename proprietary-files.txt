@@ -887,6 +887,17 @@ vendor/lib64/libpvr.so
 vendor/lib/hw/vulkan.adreno.so
 vendor/lib64/hw/vulkan.adreno.so
 
+# Health
+vendor/lib64/hw/android.hardware.health@2.0-impl-2.1-qti.so
+vendor/lib/hw/android.hardware.health@2.0-impl-2.1-qti.so
+vendor/bin/hw/android.hardware.health@2.1-service
+vendor/etc/init/android.hardware.health@2.1-service.rc
+vendor/etc/vintf/manifest/android.hardware.health@2.1.xml
+vendor/lib64/libsystem_health_mon.so
+vendor/lib/libsystem_health_mon.so
+vendor/lib64/libbatterylistener.so
+vendor/lib/libbatterylistener.so
+
 # HBTP
 vendor/etc/hbtp/loader.cfg
 vendor/lib/libhbtpclient.so

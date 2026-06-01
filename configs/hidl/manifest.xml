@@ -618,21 +618,14 @@
         </interface>
     </hal>
     <hal format="hidl">
-        <name>android.hardware.wifi</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IWifi</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
         <name>android.hardware.neuralnetworks</name>
         <transport>hwbinder</transport>
         <version>1.3</version>
         <interface>
             <name>IDevice</name>
             <instance>qti-default</instance>
+            <instance>qti-gpu</instance>
+            <instance>qti-dsp</instance>
         </interface>
     </hal>
 </manifest>

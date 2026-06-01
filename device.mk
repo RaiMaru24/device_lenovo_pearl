@@ -5,9 +5,7 @@
 
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
-
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, vendor/lenovo/pearl/pearl-vendor.mk)
 
 # Setup dalvik vm configs
@@ -103,6 +101,7 @@ PRODUCT_PACKAGES += \
     libstagefright_softomx_plugin.vendor \
     android.hardware.soundtrigger@2.0-impl \
     sound_trigger.primary.sm6150 \
+    audio.primary.default \
     audio.bluetooth.default \
     audio.usb.default \
     audio.r_submix.default \
@@ -162,11 +161,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml
 
-# ANT+
-PRODUCT_PACKAGES += \
-    AntHalService \
-    com.dsi.ant.antradio_library
-
 # Bluetooth
 PRODUCT_PACKAGES += \
     libldacBT_enc \
@@ -184,14 +178,12 @@ PRODUCT_PACKAGES += \
     libbthost_if
 
 PRODUCT_COPY_FILES += \
-    prebuilts/vndk/v29/arm64/arch-arm64-armv8-a/shared/vndk-sp/libc++.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libc++.so
-
-PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth_le.xml \
     frameworks/native/data/etc/android.hardware.bluetooth.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth.xml
 
 # USB
 PRODUCT_PACKAGES += \
+    android.hardware.usb.gadget@1.1-service-qti \
     android.hardware.usb@1.0-service
 
 # Vibrator
@@ -310,8 +302,8 @@ PRODUCT_PACKAGES += \
 
 # Health
 PRODUCT_PACKAGES += \
-    android.hardware.health@2.0-impl-2.1-qti.so \
-    android.hardware.health@2.1-service
+    android.hardware.health@2.1-impl \
+    android.hardware.health@2.1-impl.recovery
 
 # Gatekeeper
 PRODUCT_PACKAGES += \
@@ -450,8 +442,7 @@ DEVICE_PACKAGE_OVERLAYS += \
 # Power
 PRODUCT_PACKAGES += \
     android.hardware.power-service \
-    android.hardware.power-service-rc \
-    libqti-perfd-client
+    android.hardware.power-service-rc
 
 # Perf
 PRODUCT_COPY_FILES += \
@@ -565,6 +556,8 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/qcom-caf/sm8150/display \
     vendor/qcom/opensource/commonsys-intf/display \
     hardware/qcom/sm8150/gps \
+    vendor/qcom/opensource/audio-hal/st-hal \
+    vendor/qcom/opensource/interfaces/wifi/supplicant \
     hardware/qcom-caf/bootctrl
 
 # Thermal
@@ -584,14 +577,34 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1-service
 
-# WIFI
-PRODUCT_SOONG_NAMESPACES += \
-    hardware/qcom/wlan
 
+# Minimal telephony for LTE data
 PRODUCT_PACKAGES += \
-    android.hardware.wifi-service \
+    telephony-ext \
+    qti-telephony-utils \
+    qti-telephony-hidl-wrapper
+
+PRODUCT_SYSTEM_EXT_PROPERTIES += \
+    dalvik.system.boot-class-path.extra=/system_ext/framework/qti-telephony-common.jar
+    
+PRODUCT_BOOT_JARS += \
+    telephony-ext
+
+PRODUCT_PACKAGES := $(filter-out Dialer,$(PRODUCT_PACKAGES))
+
+# WiFi
+PRODUCT_PACKAGES += \
+    android.hardware.wifi@1.0-service \
+    android.hardware.wifi.supplicant@1.1 \
+    android.hardware.wifi.supplicant@1.1 \
+    android.hardware.wifi.supplicant@1.2 \
+    android.hardware.wifi.supplicant@1.3 \
+    vendor.qti.hardware.wifi.supplicant@2.0 \
+    vendor.qti.hardware.wifi.supplicant@2.1 \
+    vendor.qti.hardware.wifi.supplicant@2.2 \
     hostapd \
     ipacm \
+    libwifi-hal-qcom \
     IPACM_cfg.xml \
     libwpa_client \
     WifiOverlay \
