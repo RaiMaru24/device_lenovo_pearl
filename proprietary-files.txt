@@ -54,8 +54,8 @@ vendor/lib64/rfsa/adsp/libsns_low_lat_stream_skel.so
 
 # ATFWD
 vendor/bin/ATFWD-daemon
-vendor/lib/vendor.qti.hardware.radio.atcmdfwd@1.0.so"
-vendor/lib64/vendor.qti.hardware.radio.atcmdfwd@1.0.so" 
+vendor/lib/vendor.qti.hardware.radio.atcmdfwd@1.0.so
+vendor/lib64/vendor.qti.hardware.radio.atcmdfwd@1.0.so
 
 # ANT+
 system_ext/lib/com.qualcomm.qti.ant@1.0.so
