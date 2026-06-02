@@ -2,6 +2,15 @@
 # Battery
 genfscon sysfs /devices/platform/soc/a8c000.i2c/i2c-2/2-0055/power_supply/bq27541-0                                                         u:object_r:vendor_sysfs_battery_supply:s0
 
+# Secure labeling for Qualcomm platform wakeup nodes
+genfscon sysfs /devices/virtual/diag/diag                               u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/virtual/fastrpc/adsprpc-smd                     u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/virtual/fastrpc/adsprpc-smd-secure              u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/virtual/misc                                   u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/virtual/wakeup                                  u:object_r:sysfs_wakeup:s0
+
+# Audio SoC SoundWire bus control path mapping
+genfscon sysfs /devices/platform/soc/soc:qcom,msm-audio-apr            u:object_r:sysfs_wakeup:s0
 
 genfscon sysfs /devices/platform/soc/ae00000.qcom,mdss_mdp/idle_state           u:object_r:sysfs_graphics:s0
 genfscon sysfs /devices/platform/soc/soc:qcom,dsi-display-primary/dimlayer_bl   u:object_r:sysfs_graphics:s0

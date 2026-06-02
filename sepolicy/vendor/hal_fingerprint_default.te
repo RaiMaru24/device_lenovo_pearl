@@ -1,6 +1,8 @@
+# Data file permissions
 allow hal_fingerprint_default fingerprint_data_file:dir rw_dir_perms;
 allow hal_fingerprint_default fingerprint_data_file:file create_file_perms;
 
+# Character device nodes (TrustZone, UHID, input navigation)
 allow hal_fingerprint_default {
   fingerprint_device
   input_device
@@ -8,22 +10,37 @@ allow hal_fingerprint_default {
   uhid_device
 }: chr_file rw_file_perms;
 
+# Socket permissions
 allow hal_fingerprint_default self:netlink_socket create_socket_perms_no_ioctl;
 
+# Directory tracking permissions
 allow hal_fingerprint_default {
   input_device
   sysfs_graphics
   sysfs_msm_subsys
+  vendor_sysfs_fingerprint
 }: dir r_dir_perms;
 
+# Sysfs file control permissions
 allow hal_fingerprint_default {
   vendor_sysfs_fingerprint
   sysfs_graphics
   sysfs_msm_subsys
+  sysfs_net
 }: file rw_file_perms;
 
+# Firmware read-only helper
 r_dir_file(hal_fingerprint_default, firmware_file)
 
-set_prop(hal_fingerprint_default, vendor_fp_prop)
+# Binder IPC communication
+binder_use(hal_fingerprint_default)
+binder_call(hal_fingerprint_default, system_server)
+binder_call(system_server, hal_fingerprint_default)
 
-get_prop(system_server, vendor_fp_prop);
+# Hardware Service Manager registration
+add_hwservice(hal_fingerprint_default, hal_fingerprint_hwservice)
+allow hal_fingerprint_default hal_fingerprint_hwservice:hwservice_manager find;
+
+# Properties configuration
+set_prop(hal_fingerprint_default, vendor_fp_prop)
+get_prop(system_server, vendor_fp_prop)
