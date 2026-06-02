@@ -17,4 +17,4 @@ ro.com.google.gmsversion=11_202106
 ro.opa.eligible_device=true
 ro.setupwizard.rotation_locked=false
 setupwizard.feature.baseline_setupwizard_enabled=true
-
+ro.product.ota.model=Lenovo TB-J706L

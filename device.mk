@@ -181,10 +181,18 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth_le.xml \
     frameworks/native/data/etc/android.hardware.bluetooth.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth.xml
 
+# CAS
+PRODUCT_PACKAGES += \
+    android.hardware.cas@1.2-service \
+    android.hardware.cas@1.2-impl
+
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb.gadget@1.1-service-qti \
     android.hardware.usb@1.0-service
+
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.adb.secure=0
 
 # Vibrator
 PRODUCT_PACKAGES += \
@@ -370,7 +378,6 @@ PRODUCT_PACKAGES += \
 # Media
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
-    libc2dcolorconvert \
     libmm-omxcore \
     libOmxAacEnc \
     libOmxAmrEnc \
@@ -539,8 +546,9 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.stepcounter.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.stepcounter.xml \
     frameworks/native/data/etc/android.hardware.sensor.stepdetector.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.stepdetector.xml
 
-# SensorsL
+# Sensors
 PRODUCT_PACKAGES += \
+    android.frameworks.sensorservice@1.0 \
     android.hardware.sensors@2.0-service.multihal \
     android.hardware.sensors@2.0-ScopedWakelock.vendor
 
@@ -548,7 +556,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
    $(LOCAL_PATH)/configs/seccomp/mediacodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
    $(LOCAL_PATH)/configs/seccomp/codec2.vendor.ext.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/codec2.vendor.ext.policy \
-   $(LOCAL_PATH)/configs/seccomp/codec2.vendor.base.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/codec2.vendor.base.policy
+   $(LOCAL_PATH)/configs/seccomp/codec2.vendor.base.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/codec2.vendor.base.policy \
+   $(LOCAL_PATH)/configs/seccomp/atfwd@2.0.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/atfwd@2.0.policy
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
@@ -558,7 +567,6 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/qcom-caf/sm8150/display \
     vendor/qcom/opensource/commonsys-intf/display \
     hardware/qcom/sm8150/gps \
-    vendor/qcom/opensource/audio-hal/st-hal \
     vendor/qcom/opensource/interfaces/wifi/supplicant \
     hardware/qcom-caf/bootctrl
 
@@ -570,10 +578,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml
 
-# UClamp
-PRODUCT_PACKAGES += \
-    init.uclamp.rc
-
 
 # Fingerprint - use Goodix HAL, disable AOSP stub
 PRODUCT_PACKAGES += \
@@ -584,14 +588,18 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     telephony-ext \
     qti-telephony-utils \
-    qti-telephony-hidl-wrapper
+    qti-telephony-utils-prd \
+    qti_telephony_utils.xml \
+    qti_telephony_utils_prd.xml \
+    qti-telephony-hidl-wrapper \
+    qti-telephony-hidl-wrapper-prd \
+    qti_telephony_hidl_wrapper.xml \
+    qti_telephony_hidl_wrapper_prd.xml
 
-PRODUCT_SYSTEM_EXT_PROPERTIES += \
-    dalvik.system.boot-class-path.extra=/system_ext/framework/qti-telephony-common.jar
-    
+PRODUCT_SYSTEM_EXT_BOOT_JARS += qti-telephony-common
+
 PRODUCT_BOOT_JARS += \
-    telephony-ext \
-    qcrilhook
+    telephony-ext
 
 PRODUCT_PACKAGES := $(filter-out Dialer,$(PRODUCT_PACKAGES))
 
@@ -602,20 +610,22 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service \
     android.hardware.wifi.supplicant@1.1 \
-    android.hardware.wifi.supplicant@1.1 \
     android.hardware.wifi.supplicant@1.2 \
     android.hardware.wifi.supplicant@1.3 \
     vendor.qti.hardware.wifi.supplicant@2.0 \
     vendor.qti.hardware.wifi.supplicant@2.1 \
     vendor.qti.hardware.wifi.supplicant@2.2 \
     hostapd \
+    hostapd_default.conf \
+    hostapd.android.rc \
     ipacm \
     libwifi-hal-qcom \
     IPACM_cfg.xml \
     libwpa_client \
     WifiOverlay \
     wpa_supplicant \
-    wpa_supplicant.conf
+    wpa_supplicant.conf \
+    vendor.qti.hardware.wifi.hostapd@1.2 
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf \

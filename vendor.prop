@@ -138,8 +138,7 @@ ro.vendor.dolby.dax.version=DAX3_3.6.0.12_r1
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
 
-# LTE
-ro.telephony.disable-call=true
+
 
 # Radio
 persist.radio.multisim.config=ssss
@@ -149,7 +148,6 @@ persist.vendor.radio.enableadvancedscan=true
 persist.vendor.radio.procedure_bytes=SKIP
 persist.vendor.radio.rat_on=combine
 persist.vendor.radio.sib16_support=1
-rild.libpath=/vendor/lib64/libril-qc-hal-qmi.so
 ro.telephony.iwlan_operation_mode=legacy
 
 # USB
@@ -212,7 +210,7 @@ ro.odm.lenovo.software.version=TB-J706L_RF01_230828
 ro.odm.lenovo.tablet=3gdata
 ro.odm.lenovo.videocall=false
 ro.oem_unlock_supported=1
-ro.product.ota.model=Lenovo TB-J706L
+
 ro.product.sw.internal.version=TB-J706L_USR_S630599_2308281652_Q00067_ROW
 sys.vendor.shutdown.waittime=500
 vendor.mm.enable.qcom_parser=16777215

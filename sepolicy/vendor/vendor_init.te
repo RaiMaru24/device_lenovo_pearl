@@ -4,7 +4,7 @@ set_prop(vendor_init, vendor_video_prop)
 get_prop(vendor_init, vendor_tee_listener_prop);
 allow vendor_init persist_debug_prop:file { read };
 dontaudit vendor_init default_prop:property_service set;
-
+allow vendor_init vendor_tombstone_data_file:dir getattr;
 
 allow vendor_init {
   vendor_debugfs_clk

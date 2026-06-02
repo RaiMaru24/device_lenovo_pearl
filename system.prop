@@ -10,6 +10,10 @@ ro.bluetooth.library_name=libbluetooth_qti.so
 # Camera
 persist.vendor.camera.privapp.list=com.validation,org.codeaurora.snapcam
 vendor.camera.aux.packagelist=com.validation,org.codeaurora.snapcam,com.dualcam.calibration,com.ulsee.camera
+ro.hardware.camera=qcom
+vendor.camera.hal1.packagelist=none
+persist.vendor.camera.provider.2.4=legacy
+ro.vendor.camera.chilib.name=com.qti.chi.override.so
 
 # CNE
 persist.vendor.cne.feature=1
@@ -37,6 +41,9 @@ persist.vendor.overlay.izat.optin=rro
 
 # Health
 ro.charger.enable_suspend = 1
+
+# LTE
+ro.telephony.disable-call=true
 
 # Media
 debug.stagefright.ccodec=1

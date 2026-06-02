@@ -1,6 +1,9 @@
 # Audio
 vendor.audio.pa.cp.calibration                                  u:object_r:vendor_audio_prop:s0
 
+# Bluetooth
+persist.vendor.bt.a2dp_offload_cap                              u:object_r:vendor_bluetooth_prop:s0
+
 # Camera
 persist.camera.arcsoft.                                         u:object_r:vendor_camera_prop:s0
 persist.camera.pandora.                                         u:object_r:vendor_camera_prop:s0
@@ -27,3 +30,7 @@ vendor.powerhal.init                                            u:object_r:vendo
 vendor.powerhal.lpm                                             u:object_r:vendor_power_prop:s0
 vendor.powerhal.rendering                                       u:object_r:vendor_power_prop:s0
 vendor.powerhal.state                                           u:object_r:vendor_power_prop:s0
+
+# Lenovo
+ro.boot.target.region                                           u:object_r:vendor_default_prop:s0
+ro.product.ota.model                                            u:object_r:vendor_default_prop:s0

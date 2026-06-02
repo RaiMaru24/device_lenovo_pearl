@@ -52,6 +52,9 @@ vendor/lib/rfsa/adsp/libsns_low_lat_stream_skel.so
 vendor/lib64/rfsa/adsp/libsns_device_mode_skel.so
 vendor/lib64/rfsa/adsp/libsns_low_lat_stream_skel.so
 
+# ATFWD
+vendor/bin/ATFWD-daemon
+
 # ANT+
 system_ext/lib/com.qualcomm.qti.ant@1.0.so
 system_ext/lib64/com.qualcomm.qti.ant@1.0.so
@@ -127,6 +130,23 @@ vendor/lib64/soundfx/libvolumelistener.so
 vendor/lib64/soundfx/libldnhncr.so
 vendor/lib64/soundfx/libreverbwrapper.so
 
+# Audio Firmware
+vendor/firmware/asrp_params_melon_aecnr_dual_mic.bin
+vendor/firmware/okg_amodel.bin
+vendor/firmware/spk1_fast_switch1.txt
+vendor/firmware/spk1_fast_switch2.txt
+vendor/firmware/spk1_fast_switch3.txt
+vendor/firmware/spk2_fast_switch1.txt
+vendor/firmware/spk2_fast_switch2.txt
+vendor/firmware/spk2_fast_switch3.txt
+vendor/firmware/spk3_fast_switch1.txt
+vendor/firmware/spk3_fast_switch2.txt
+vendor/firmware/spk3_fast_switch3.txt
+vendor/firmware/spk4_fast_switch1.txt
+vendor/firmware/spk4_fast_switch2.txt
+vendor/firmware/spk4_fast_switch3.txt
+
+
 # Bluetooth
 vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti
 vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc
@@ -141,8 +161,10 @@ vendor/lib/hw/vendor.qti.hardware.bluetooth_audio@2.1-impl.so
 vendor/lib/hw/vendor.qti.hardware.bluetooth_sar@1.1-impl.so
 vendor/lib/hw/vendor.qti.hardware.btconfigstore@1.0-impl.so
 vendor/lib/hw/vendor.qti.hardware.btconfigstore@2.0-impl.so
+vendor/lib/libbluetooth_audio_session.so
 vendor/lib/libbluetooth_audio_session_qti.so
 vendor/lib/libbluetooth_audio_session_qti_2_1.so
+vendor/lib/libwebrtc_audio_preprocessing.so
 vendor/lib/vendor.qti.hardware.bluetooth_sar@1.0.so
 vendor/lib/vendor.qti.hardware.bluetooth_sar@1.1.so
 vendor/lib64/btaudio_offload_if.so
@@ -151,7 +173,9 @@ vendor/lib64/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so
 vendor/lib64/hw/vendor.qti.hardware.bluetooth_sar@1.1-impl.so
 vendor/lib64/hw/vendor.qti.hardware.btconfigstore@1.0-impl.so
 vendor/lib64/hw/vendor.qti.hardware.btconfigstore@2.0-impl.so
+vendor/lib64/libbluetooth_audio_session.so
 vendor/lib64/libbluetooth_audio_session_qti.so
+vendor/lib64/libwebrtc_audio_preprocessing.so
 vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.0.so
 vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.1.so
 vendor/lib64/libsoc_helper.so
@@ -900,6 +924,7 @@ vendor/lib64/libbatterylistener.so
 vendor/lib/libbatterylistener.so
 
 # HBTP
+vendor/bin/hbtp_daemon
 vendor/etc/hbtp/loader.cfg
 vendor/lib/libhbtpclient.so
 vendor/lib/libhbtpdsp.so
@@ -1048,6 +1073,7 @@ vendor/lib64/vendor.qti.hardware.perf@2.1.so
 vendor/bin/hw/vendor.qti.hardware.perf@2.2-service
 vendor/etc/init/vendor.qti.hardware.perf@2.2-service.rc
 vendor/etc/perf/commonresourceconfigs.xml
+vendor/etc/perf/commonsysnodesconfigs.xml
 vendor/etc/perf/perfboostsconfig.xml
 vendor/etc/perf/perfconfigstore.xml
 vendor/etc/perf/targetconfig.xml
@@ -1071,6 +1097,14 @@ vendor/lib64/vendor.qti.hardware.perf@2.0.so
 
 # Perf - IRQ Balance
 vendor/bin/msm_irqbalance
+
+# lm
+vendor/etc/lm/AdaptLaunchFeature.xml
+vendor/etc/lm/AppClassifierFeature.xml
+vendor/etc/lm/GameOptimizationFeature.xml
+vendor/lib64/libadaptlaunch.so
+vendor/lib64/libappclassifier.so
+vendor/lib64/libgameoptfeature.so
 
 # Peripheral manager
 vendor/bin/pm-proxy
@@ -1219,6 +1253,9 @@ vendor/radio/qcril_database/upgrade/4_version_update_ecc_table.sql
 vendor/radio/qcril_database/upgrade/5_version_update_ecc_table.sql
 vendor/radio/qcril_database/upgrade/6_version_update_ecc_table.sql
 vendor/radio/qcril_database/upgrade/7_version_update_ecc_table.sql
+vendor/radio/qcril_database/upgrade/8_version_update_ecc_table.sql
+vendor/radio/qcril_database/upgrade/9_version_update_ecc_table.sql
+vendor/radio/qcril_database/upgrade/10_version_update_ecc_table.sql
 vendor/lib64/libprotobuf-cpp-full-3.9.1.so
 vendor/lib64/libprotobuf-cpp-lite-3.9.1.so
 vendor/lib64/librmnetctl.so
@@ -1505,6 +1542,10 @@ vendor/bin/hw/vendor.qti.hardware.tui_comm@1.0-service-qti
 vendor/etc/init/vendor.qti.hardware.tui_comm@1.0-service-qti.rc
 vendor/lib64/vendor.qti.hardware.tui_comm@1.0.so
 
+# Secure Systems Group / TrustZone
+vendor/etc/ssg/ta_config.json
+vendor/etc/ssg/tz_whitelist.json
+
 # Dolby (for later)
 vendor/bin/hw/vendor.dolby.hardware.dms@2.0-service
 vendor/etc/init/vendor.dolby.hardware.dms@2.0-service.rc
@@ -1538,7 +1579,26 @@ vendor/lib64/vendor.qti.hardware.vpp@1.2.so
 vendor/lib64/vendor.qti.hardware.vpp@1.3.so
 
 # WiFi
+vendor/bin/cnss_diag
 vendor/bin/cnss-daemon
+vendor/etc/wifi/aoa_cldb_falcon.bin
+vendor/etc/wifi/aoa_cldb_swl14.bin
+vendor/etc/wifi/fstman.ini
+vendor/bin/fstman
+vendor/lib64/vendor.qti.hardware.fstman@1.0.so
+vendor/etc/init/vendor.qti.hardware.fstman@1.0-service.rc
+vendor/etc/wifi/icm.conf
+vendor/etc/wifi/wigig_p2p_supplicant.conf
+vendor/etc/wifi/wigig_supplicant.conf
+vendor/firmware/wigig/wigig.ini
+vendor/etc/configstore/wigig.xml
+vendor/bin/wigig_wiburn
+vendor/bin/wigighalsvc
+vendor/bin/wigignpt
+vendor/lib/vendor.qti.hardware.wigig.netperftuner@1.0.so
+vendor/lib64/vendor.qti.hardware.wigig.netperftuner@1.0.so
+vendor/lib64/vendor.qti.hardware.wigig.supptunnel@1.0.so
+vendor/etc/init/vendor.qti.hardware.wigig.supptunnel@1.0-service.rc
 
 # WiFi Display
 system_ext/bin/wfdservice
