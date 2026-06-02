@@ -7,7 +7,6 @@ genfscon sysfs /devices/virtual/diag/diag                               u:object
 genfscon sysfs /devices/virtual/fastrpc/adsprpc-smd                     u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/virtual/fastrpc/adsprpc-smd-secure              u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/virtual/misc                                   u:object_r:sysfs_wakeup:s0
-genfscon sysfs /devices/virtual/wakeup                                  u:object_r:sysfs_wakeup:s0
 
 # Audio SoC SoundWire bus control path mapping
 genfscon sysfs /devices/platform/soc/soc:qcom,msm-audio-apr            u:object_r:sysfs_wakeup:s0

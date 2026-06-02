@@ -54,6 +54,8 @@ vendor/lib64/rfsa/adsp/libsns_low_lat_stream_skel.so
 
 # ATFWD
 vendor/bin/ATFWD-daemon
+vendor/lib/vendor.qti.hardware.radio.atcmdfwd@1.0.so"
+vendor/lib64/vendor.qti.hardware.radio.atcmdfwd@1.0.so" 
 
 # ANT+
 system_ext/lib/com.qualcomm.qti.ant@1.0.so
@@ -571,6 +573,11 @@ vendor/lib64/libsnpe_dsp_domains_v2.so
 vendor/lib64/libsns_device_mode_stub.so
 vendor/lib64/libswregistrationalgo.so
 vendor/lib64/libsymphony-cpu.so
+vendor/etc/camera/VfbTuningInterface.xml
+vendor/etc/camera/nn/body_segmentation_model_still.dlc
+vendor/etc/camera/nn/body_segmentation_model_video.dlc
+vendor/etc/camera/nn/matting.dlc
+
 
 # Camera device
 vendor/lib/camera.device@1.0-impl.so

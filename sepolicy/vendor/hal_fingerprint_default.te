@@ -38,8 +38,7 @@ binder_call(hal_fingerprint_default, system_server)
 binder_call(system_server, hal_fingerprint_default)
 
 # Hardware Service Manager registration
-add_hwservice(hal_fingerprint_default, hal_fingerprint_hwservice)
-allow hal_fingerprint_default hal_fingerprint_hwservice:hwservice_manager find;
+allow hal_fingerprint_default hal_fingerprint_hwservice:hwservice_manager { add find };
 
 # Properties configuration
 set_prop(hal_fingerprint_default, vendor_fp_prop)

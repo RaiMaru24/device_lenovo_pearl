@@ -1,0 +1,17 @@
+cc_library {
+    name: "libcomparetf2",
+    srcs: ["comparetf2.c"],
+    compile_multilib: "64",
+    vendor: true,
+}
+
+cc_library {
+    name: "libshim-vidhance",
+    srcs: ["com.vidhance.node.eis_shim.cpp"],
+    compile_multilib: "64",
+    shared_libs: [
+        "libui",
+        "libutils"
+    ],
+    vendor: true,
+}
