@@ -110,7 +110,8 @@ PRODUCT_PACKAGES += \
     audio.usb.default \
     audio.primary.sm6150 \
     sound_trigger.primary.sm6150 \
-    audio.primary.default
+    audio.primary.default \
+    audioadsprpcd
 
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/audio/,$(TARGET_COPY_OUT_VENDOR)/etc)
@@ -173,11 +174,14 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.bluetooth_audio@2.1.vendor \
     android.hardware.bluetooth.audio@2.0-impl \
     audio.bluetooth.default \
-    vendor.qti.hardware.bluetooth_audio@2.1.vendor \
     vendor.qti.hardware.btconfigstore@1.0.vendor \
     vendor.qti.hardware.btconfigstore@2.0.vendor \
     BluetoothQti \
-    libbthost_if
+    libbthost_if \
+    liba2dpoffload \
+    android.hardware.bluetooth.a2dp@1.0.vendor \
+    android.hardware.bluetooth.a2dp@1.0-impl \
+    android.hardware.bluetooth.a2dp@1.0-service
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth_le.xml \
@@ -209,9 +213,11 @@ PRODUCT_PACKAGES += \
     libgui_vendor \
     libxml2 \
     Snap \
+    android.hardware.camera.device@3.6 \
+    android.hardware.camera.provider@2.4-legacy \
+    android.hardware.camera.provider@2.4-external \
     vendor.qti.hardware.camera.device@1.0.vendor \
-    android.frameworks.displayservice@1.0
-
+    android.frameworks.displayservice@1.0 
 # CNE
 PRODUCT_PACKAGES += \
     cneapiclient \
@@ -359,6 +365,7 @@ PRODUCT_COPY_FILES += \
 
 # Keymaster
 PRODUCT_PACKAGES += \
+    android.hardware.authsecret@1.0-service \
     android.hardware.keymaster@4.0.vendor \
     android.system.keystore2
 
@@ -379,6 +386,7 @@ PRODUCT_PACKAGES += \
 
 # Media
 PRODUCT_PACKAGES += \
+    android.hardware.media.omx@1.0-service \
     libc2dcolorconvert \
     libmm-omxcore \
     libOmxAacEnc \
@@ -526,10 +534,10 @@ PRODUCT_COPY_FILES += \
 
 # RIL
 PRODUCT_PACKAGES += \
-    android.hardware.radio@1.4.vendor \
+    android.hardware.radio@1.5.vendor \
     android.hardware.radio.config@1.0.vendor \
     android.hardware.radio.deprecated@1.0.vendor \
-    android.hardware.secure_element@1.0.vendor \
+    android.hardware.secure_element@1.2.vendor \
     CarrierConfigOverlay \
     libjson \
     libril \

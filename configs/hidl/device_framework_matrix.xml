@@ -12,7 +12,7 @@
     <hal format="hidl" optional="true">
         <name>android.hardware.radio</name>
         <transport>hwbinder</transport>
-        <version>1.4</version>
+        <version>1.5</version>
         <interface>
             <name>ISap</name>
             <instance>slot1</instance>
@@ -159,7 +159,7 @@
     <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.bluetooth_audio</name>
         <transport>hwbinder</transport>
-        <version>2.0</version>
+        <version>2.1</version>
         <interface>
             <name>IBluetoothAudioProvidersFactory</name>
             <instance>default</instance>
@@ -585,6 +585,24 @@
         <interface>
             <name>IAtCmdFwd</name>
             <instance>AtCmdFwdService</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.wifi.supplicant</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>ISupplicant</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.secure_element</name>
+        <transport>hwbinder</transport>
+        <version>1.2</version>
+        <interface>
+            <name>ISecureElement</name>
+            <instance>eSE1</instance>
         </interface>
     </hal>
 </compatibility-matrix>

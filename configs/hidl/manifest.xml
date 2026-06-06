@@ -96,7 +96,7 @@
     <hal format="hidl">
         <name>android.hardware.radio</name>
         <transport>hwbinder</transport>
-        <version>1.4</version>
+        <version>1.5</version>
         <interface>
             <name>ISap</name>
             <instance>slot1</instance>
@@ -266,7 +266,7 @@
     <hal format="hidl">
         <name>vendor.qti.hardware.bluetooth_audio</name>
         <transport>hwbinder</transport>
-        <version>2.0</version>
+        <version>2.1</version>
         <interface>
             <name>IBluetoothAudioProvidersFactory</name>
             <instance>default</instance>
@@ -638,12 +638,21 @@
         </interface>
     </hal>
     <hal format="hidl">
-        <name>android.hardware.sensors</name>
+        <name>android.hardware.input.classifier</name>
         <transport>hwbinder</transport>
-        <version>2.0</version>
+        <version>1.0</version>
         <interface>
-                <name>ISensors</name>
-                <instance>default</instance>
+            <name>IInputClassifier</name>
+            <instance>default</instance>
         </interface>
-        </hal>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.radio.deprecated</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IOemHook</name>
+            <instance>slot1</instance>
+        </interface>
+    </hal>
 </manifest>
