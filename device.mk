@@ -43,9 +43,7 @@ AB_OTA_PARTITIONS += \
 
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.1-impl-qti \
-    android.hardware.boot@1.1-impl-qti.recovery \
     android.hardware.boot@1.1-service \
-    android.hardware.boot@1.1-service.rc \
     android.hardware.boot@1.0-impl-1.1-qti \
     bootctrl.qcom \
     bootctrl.qcom.recovery
@@ -96,10 +94,9 @@ PRODUCT_PACKAGES += \
     android.hardware.audio@6.0-impl \
     android.hardware.audio.effect@6.0-impl \
     android.hardware.audio.service \
-    android.hardware.bluetooth.audio-impl \
     libaudioroute.vendor \
     libstagefright_softomx_plugin.vendor \
-    android.hardware.soundtrigger@2.0-impl \
+    android.hardware.soundtrigger@2.0 \
     libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessing \
@@ -111,7 +108,8 @@ PRODUCT_PACKAGES += \
     audio.primary.sm6150 \
     sound_trigger.primary.sm6150 \
     audio.primary.default \
-    audioadsprpcd
+    audioadsprpcd \
+    android.hardware.audio.common-util
 
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/audio/,$(TARGET_COPY_OUT_VENDOR)/etc)
@@ -127,7 +125,6 @@ PRODUCT_COPY_FILES += \
 
 # Permissions
 PRODUCT_COPY_FILES += \
-    external/ant-wireless/antradio-library/com.dsi.ant.antradio_library.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.dsi.ant.antradio_library.xml \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.low_latency.xml \
     frameworks/native/data/etc/android.hardware.audio.pro.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.pro.xml \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth_le.xml \
@@ -156,32 +153,34 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.vulkan.compute-0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.compute-0.xml \
     frameworks/native/data/etc/android.hardware.vulkan.level-1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.level-1.xml \
     frameworks/native/data/etc/android.hardware.vulkan.version-1_1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version-1_1.xml \
+    frameworks/native/data/etc/android.hardware.wifi.aware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.aware.xml \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.direct.xml \
     frameworks/native/data/etc/android.hardware.wifi.passpoint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.passpoint.xml \
+    frameworks/native/data/etc/android.hardware.wifi.rtt.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.rtt.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.software.ipsec_tunnels.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.ipsec_tunnels.xml \
     frameworks/native/data/etc/android.software.midi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.midi.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.sip.voip.xml \
+    frameworks/native/data/etc/android.software.verified_boot.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.verified_boot.xml \
+    frameworks/native/data/etc/android.software.vulkan.deqp.level-2020-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.vulkan.deqp.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml
 
 # Bluetooth
 PRODUCT_PACKAGES += \
     libldacBT_enc \
     libldacBT_abr \
-    android.hardware.bluetooth@1.0 \
-    android.hardware.bluetooth@1.0.vendor \
-    android.hardware.bluetooth@1.1.vendor \
+    android.hardware.bluetooth@1.0-impl \
+    android.hardware.bluetooth@1.0-service \
     vendor.qti.hardware.bluetooth_audio@2.1.vendor \
     android.hardware.bluetooth.audio@2.0-impl \
+    libbluetooth_audio_session \
     audio.bluetooth.default \
     vendor.qti.hardware.btconfigstore@1.0.vendor \
     vendor.qti.hardware.btconfigstore@2.0.vendor \
     BluetoothQti \
     libbthost_if \
     liba2dpoffload \
-    android.hardware.bluetooth.a2dp@1.0.vendor \
-    android.hardware.bluetooth.a2dp@1.0-impl \
-    android.hardware.bluetooth.a2dp@1.0-service
+    android.hardware.bluetooth.a2dp@1.0-impl.mock
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth_le.xml \
@@ -189,12 +188,11 @@ PRODUCT_COPY_FILES += \
 
 # CAS
 PRODUCT_PACKAGES += \
-    android.hardware.cas@1.2-service \
-    android.hardware.cas@1.2-impl
+    android.hardware.cas@1.2-service
 
 # USB
 PRODUCT_PACKAGES += \
-    android.hardware.usb.gadget@1.1-service-qti \
+    android.hardware.usb.gadget@1.0-service-qti \
     android.hardware.usb@1.0-service
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
@@ -207,17 +205,19 @@ PRODUCT_PACKAGES += \
 # Camera
 $(call soong_config_set_bool,camera,override_format_from_reserved,true)
 PRODUCT_PACKAGES += \
+    android.hardware.camera.provider@2.4-legacy \
+    android.hardware.camera.provider@2.4-external \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service_64 \
+    android.hardware.camera.provider@2.6 \
     libdng_sdk.vendor \
     libgui_vendor \
     libxml2 \
     Snap \
-    android.hardware.camera.device@3.6 \
-    android.hardware.camera.provider@2.4-legacy \
-    android.hardware.camera.provider@2.4-external \
+    camera.device@3.6-external-impl \
     vendor.qti.hardware.camera.device@1.0.vendor \
-    android.frameworks.displayservice@1.0 
+    android.frameworks.displayservice@1.0 \
+    android.hardware.camera.common@1.0-helper
 # CNE
 PRODUCT_PACKAGES += \
     cneapiclient \
@@ -264,6 +264,10 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     disable_configstore
+
+# ConfirmationUi
+PRODUCT_PACKAGES += \
+    android.hardware.confirmationui@1.0-service
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.opengles.aep.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.opengles.aep.xml
@@ -321,7 +325,9 @@ PRODUCT_PACKAGES += \
 # Health
 PRODUCT_PACKAGES += \
     android.hardware.health@2.1-impl \
-    android.hardware.health@2.1-impl.recovery
+    android.hardware.health@2.1-impl.recovery \
+    android.hardware.health@2.1-service \
+    android.hardware.health.storage@1.0-service
 
 # Gatekeeper
 PRODUCT_PACKAGES += \
@@ -369,6 +375,11 @@ PRODUCT_PACKAGES += \
     android.hardware.keymaster@4.0.vendor \
     android.system.keystore2
 
+# Light
+PRODUCT_PACKAGES += \
+    android.hardware.light \
+    android.hardware.light@2.0-impl
+
 # Network
 PRODUCT_PACKAGES += \
     android.system.net.netd@1.1.vendor \
@@ -386,7 +397,6 @@ PRODUCT_PACKAGES += \
 
 # Media
 PRODUCT_PACKAGES += \
-    android.hardware.media.omx@1.0-service \
     libc2dcolorconvert \
     libmm-omxcore \
     libOmxAacEnc \
@@ -536,7 +546,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.radio@1.5.vendor \
     android.hardware.radio.config@1.0.vendor \
-    android.hardware.radio.deprecated@1.0.vendor \
     android.hardware.secure_element@1.2.vendor \
     CarrierConfigOverlay \
     libjson \
@@ -548,8 +557,7 @@ PRODUCT_PACKAGES += \
 # Sensors
 PRODUCT_PACKAGES += \
     android.frameworks.sensorservice@1.0 \
-    android.hardware.sensors@2.0-service.multihal \
-    android.hardware.sensors@2.0-ScopedWakelock.vendor
+    android.hardware.sensors@2.0-service.multihal 
 
 # Seccomp policy
 PRODUCT_COPY_FILES += \
@@ -567,7 +575,9 @@ PRODUCT_SOONG_NAMESPACES += \
     vendor/qcom/opensource/commonsys-intf/display \
     hardware/qcom/sm8150/gps \
     vendor/qcom/opensource/interfaces/wifi/supplicant \
-    hardware/qcom-caf/bootctrl
+    hardware/qcom-caf/bootctrl \
+    vendor/qcom/opensource/usb/hal \
+    vendor/qcom/opensource/power
 
 # Thermal
 PRODUCT_PACKAGES += \
